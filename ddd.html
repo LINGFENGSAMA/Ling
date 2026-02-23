@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 基本组件实例</title>
+    <!-- 简单内置样式，让组件看起来更整洁，不依赖任何外部框架 -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fb;
+            padding: 2rem;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+        }
+
+        .subhead {
+            color: #475569;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+            font-weight: 400;
+        }
+
+        /* 组件演示网格 */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 每个组件的卡片容器 */
+        .component-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+            padding: 1.5rem 1.5rem 2rem;
+            transition: box-shadow 0.2s;
+            border: 1px solid #e9eef2;
+        }
+
+        .component-card:hover {
+            box-shadow: 0 20px 30px -10px rgba(0,100,200,0.1);
+            border-color: #cbd5e1;
+        }
+
+        .component-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px dashed #d1d9e6;
+            padding-bottom: 0.75rem;
+        }
+
+        .component-title span {
+            background: #eef2ff;
+            color: #1e40af;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 组件展示区域 — 加一点内间距 */
+        .demo-area {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* 水平排列辅助 */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* 分割线 */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 0.5rem 0;
+        }
+
+        /* 按钮基本样式 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 9999px; /* 圆角风格 */
+            border: 1px solid transparent;
+            cursor: default;  /* 演示用，不模拟点击 */
+            transition: 0.1s;
+            background: white;
+            border-color: #cbd5e1;
+            color: #1e293b;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-lg {
+            padding: 0.7rem 2rem;
+            font-size: 1rem;
+        }
+
+        /* 表单元素通用 */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            width: 100%;
+        }
+
+        label {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        input, select, textarea {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.15s;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            border-color: transparent;
+        }
+
+        /* 单选/复选框特殊处理 */
+        .checkbox-group, .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-right: 1rem;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            width: auto;
+            margin: 0;
+            accent-color: #2563eb;
+        }
+
+        /* 卡片组件 */
+        .simple-card {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid #d9e2ef;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .card-header {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            color: #334155;
+            font-size: 0.9rem;
+        }
+
+        /* 警告框/提示框 */
+        .alert {
+            padding: 0.9rem 1.2rem;
+            border-radius: 0.8rem;
+            background: #e2e3e5;
+            border-left: 5px solid #6c757d;
+            color: #1e293b;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-left-color: #10b981;
+            color: #065f46;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-left-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            border-left-color: #ef4444;
+            color: #991b1b;
+        }
+
+        /* 列表组 */
+        .list-group {
+            border: 1px solid #d1d9e6;
+            border-radius: 0.8rem;
+            overflow: hidden;
+        }
+
+        .list-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e9eef2;
+            background: white;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* 徽章/标签 */
+        .badge {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-green {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        /* 导航标签 */
+        .nav-tabs {
+            display: flex;
+            gap: 0.25rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1.2rem;
+            background: #f1f5f9;
+            border-radius: 20px 20px 0 0;
+            font-size: 0.9rem;
+            border: 1px solid #d9e2ef;
+            border-bottom: none;
+            color: #475569;
+        }
+
+        .tab.active {
+            background: white;
+            font-weight: 500;
+            border-color: #a5c0e0;
+            border-bottom: 2px solid white;
+            margin-bottom: -2px;
+            color: #0f172a;
+        }
+
+        /* 工具类 */
+        .w-100 { width: 100%; }
+        .mt-2 { margin-top: 0.5rem; }
+        .text-small { font-size: 0.8rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 HTML 基本组件实例</h1>
+        <div class="subhead">按钮 · 表单 · 卡片 · 提示框 · 列表 · 标签 · 导航</div>
+
+        <!-- 使用网格展示各种基本组件 -->
+        <div class="component-grid">
+
+            <!-- 1. 按钮家族 -->
+            <div class="component-card">
+                <div class="component-title">🔘 按钮 Buttons <span>多种变体</span></div>
+                <div class="demo-area">
+                    <div class="row">
+                        <button class="btn">默认</button>
+                        <button class="btn btn-primary">主要</button>
+                        <button class="btn btn-outline">边框</button>
+                        <button class="btn btn-danger">危险</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-sm">小号</button>
+                        <button class="btn">常规</button>
+                        <button class="btn btn-lg">大号</button>
+                    </div>
+                    <div class="row">
+                        <span class="text-small">(纯样式演示，无交互)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 文本输入 & 选择框 -->
+            <div class="component-card">
+                <div class="component-title">📋 输入组件 Inputs</div>
+                <div class="demo-area">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="例如：张三" value="欧阳夏丹">
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" placeholder="name@example.com" value="hello@demo.com">
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="flex:1">
+                            <label>城市</label>
+                            <select>
+                                <option>北京</option>
+                                <option selected>上海</option>
+                                <option>广州</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex:1">
+                            <label>邮编</label>
+                            <input type="text" placeholder="100000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>留言</label>
+                        <textarea rows="2">这是一个文本域示例</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 单选 & 复选 & 开关风格 (纯html) -->
+            <div class="component-card">
+                <div class="component-title">🔘 选择控件 Checkbox & Radio</div>
+                <div class="demo-area">
+                    <div class="checkbox-group">
+                        <span class="badge">爱好</span>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="c1" checked> <label for="c1">阅读</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="c2"> <label for="c2">旅行</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="c3" checked> <label for="c3">音乐</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="radio-group">
+                        <span class="badge">性别</span>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="r1" checked> <label for="r1">男</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="r2"> <label for="r2">女</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="r3"> <label for="r3">其他</label>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <span class="badge badge-blue">默认选中“阅读”和“音乐”</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 卡片组件 Card -->
+            <div class="component-card">
+                <div class="component-title">📦 卡片 Card</div>
+                <div class="demo-area">
+                    <div class="simple-card">
+                        <div class="card-header">✨ 简洁卡片</div>
+                        <div class="card-content">
+                            这是卡片的内容区域，可以放文字、图片或者其他混合内容。卡片自带圆角和柔和阴影。
+                        </div>
+                        <div class="row" style="margin-top: 0.8rem;">
+                            <span class="badge badge-green">标签1</span>
+                            <span class="badge badge-blue">标签2</span>
+                        </div>
+                    </div>
+                    <div class="simple-card" style="background: #ffffff;">
+                        <div class="card-header">📌 带有操作</div>
+                        <div class="card-content">
+                            卡片可以包含按钮链接等。
+                        </div>
+                        <div class="row" style="margin-top: 0.8rem;">
+                            <button class="btn btn-sm btn-primary">确认</button>
+                            <button class="btn btn-sm">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 提示框 / 警告 Alerts -->
+            <div class="component-card">
+                <div class="component-title">⚠️ 警告提示 Alerts</div>
+                <div class="demo-area">
+                    <div class="alert">这是一个普通提示</div>
+                    <div class="alert alert-success">操作成功！你的设置已保存。</div>
+                    <div class="alert alert-warning">注意：该功能即将弃用</div>
+                    <div class="alert alert-error">错误：无法连接服务器</div>
+                </div>
+            </div>
+
+            <!-- 6. 列表组 List group -->
+            <div class="component-card">
+                <div class="component-title">📋 列表组 List</div>
+                <div class="demo-area">
+                    <div class="list-group">
+                        <div class="list-item">🍎 苹果</div>
+                        <div class="list-item">🍌 香蕉</div>
+                        <div class="list-item">🍊 橙子</div>
+                        <div class="list-item">🍇 葡萄</div>
+                    </div>
+                </div>
+                <div class="mt-2 text-small">支持悬停效果 (仅演示样式)</div>
+            </div>
+
+            <!-- 7. 徽章 / 标签 Badges -->
+            <div class="component-card">
+                <div class="component-title">🏷️ 徽章 Badges</div>
+                <div class="demo-area">
+                    <div class="row">
+                        <span class="badge">默认</span>
+                        <span class="badge badge-blue">信息</span>
+                        <span class="badge badge-green">成功</span>
+                        <span class="badge" style="background:#f1d7f5;">自定义</span>
+                    </div>
+                    <div class="row">
+                        <span class="badge">新</span>
+                        <span class="badge badge-blue">13条消息</span>
+                        <span class="badge badge-green">会员</span>
+                    </div>
+                    <div>可以结合其他组件使用</div>
+                </div>
+            </div>
+
+            <!-- 8. 导航标签 Tabs / 简单的菜单 -->
+            <div class="component-card">
+                <div class="component-title">📑 标签页 Tabs</div>
+                <div class="demo-area">
+                    <div class="nav-tabs">
+                        <span class="tab active">正在热映</span>
+                        <span class="tab">即将上映</span>
+                        <span class="tab">经典片单</span>
+                    </div>
+                    <div style="padding: 1rem 0.5rem; background: #f9f9fc; border-radius: 0 0 0.8rem 0.8rem; border:1px solid #eef2f6;">
+                        当前展示“正在热映”的内容<br>
+                        <span class="text-small">(点击无效果，纯样式)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二行：一些额外的大型组件混合展示 (进度、折叠面板简单模拟) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <!-- 简单折叠/手风琴外观 (静态) -->
+            <div class="component-card" style="grid-column: span 2; display: block;">
+                <div class="component-title">🧩 更多组件：折叠面板 (手风琴) </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 240px;">
+                        <div style="border:1px solid #cbd5e1; border-radius: 0.8rem; overflow: hidden;">
+                            <div style="background: #eef2f6; padding: 0.8rem 1rem; font-weight: 500; border-bottom: 1px solid #cbd5e1;">📌 面板标题 1</div>
+                            <div style="padding: 1rem; background: white;">这是面板1的内容，可以放置任何信息。默认展开状态。</div>
+                            <div style="background: #eef2f6; padding: 0.8rem 1rem; font-weight: 500; border-top: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1;">📌 面板标题 2</div>
+                            <div style="padding: 0; max-height: 0; opacity: 0; overflow: hidden;">(折叠隐藏区域，演示需要实际JS，此处仅示意)</div>
+                            <div style="background: #f8fafc; padding: 0.8rem; border-top: 1px dashed #cbd5e1; color:#6b7280;">第二个面板折叠 (静态展示样式)</div>
+                        </div>
+                        <div class="text-small mt-2">仅静态结构，交互需JavaScript。</div>
+                    </div>
+                    <!-- 简单进度条静态演示 -->
+                    <div style="flex: 1; min-width: 200px;">
+                        <div class="component-title">📊 进度条 (静态)</div>
+                        <div style="margin: 1rem 0;">
+                            <div style="display: flex; justify-content: space-between; font-size:0.85rem;"><span>加载中</span> <span>65%</span></div>
+                            <div style="height: 0.6rem; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 0.2rem;">
+                                <div style="width: 65%; height: 100%; background: #2563eb; border-radius: 999px;"></div>
+                            </div>
+                        </div>
+                        <div style="margin: 1.5rem 0 0.5rem;">
+                            <div>存储空间</div>
+                            <div style="height: 1.2rem; background: #e2e8f0; border-radius: 999px; overflow: hidden; display: flex;">
+                                <div style="width: 45%; background: #3b82f6; color:white; font-size:0.7rem; text-align:center;">图片 45%</div>
+                                <div style="width: 20%; background: #10b981; color:white; font-size:0.7rem; text-align:center;">文件 20%</div>
+                                <div style="width: 15%; background: #f59e0b;"></div>
+                            </div>
+                            <div class="text-small">剩余15% 空闲</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最后的表单示例 — 综合展示 -->
+        <div class="component-card" style="margin-top: 2rem;">
+            <div class="component-title">📝 综合示例：登录 / 注册表单</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                <div style="flex: 1; min-width: 250px;">
+                    <div class="form-group">
+                        <label>邮箱 / 用户名</label>
+                        <input type="text" placeholder="例如：user@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" placeholder="········">
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="remember"> <label for="remember">记住我</label>
+                    </div>
+                    <div class="row" style="margin-top: 1rem;">
+                        <button class="btn btn-primary">登录</button>
+                        <button class="btn">注册账户</button>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <div class="alert alert-success">提示：这是纯HTML样式演示，所有按钮无功能。</div>
+                    <p class="text-small">🔒 安全声明：不会发送任何数据，仅供界面参考。</p>
+                    <div class="badge badge-blue">HTML组件库</div>
+                    <div class="badge">v1.0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部注脚 -->
+        <div style="margin-top: 2.5rem; text-align: center; color: #64748b; border-top: 1px solid #d4dfeb; padding-top: 1.5rem;">
+            ⚡ 基本组件实例 · 涵盖按钮、表单、卡片、提示框、列表、标签、导航等 · 纯HTML/CSS  (无JavaScript交互)
+        </div>
+    </div>
+</body>
+</html>
