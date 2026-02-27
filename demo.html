@@ -1,62 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 声明文档类型为HTML5 -->
+<html lang="zh-cn">
+<!-- 设置网页语言为中文 -->
 
 <head>
-  <meta charset="UTF-8">
-  <title>Land</title>
-  <style>
-    .navbar {
-      float: left;
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      target: _blank;
-    }
-
-    .navstr {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      target: _blank;
-    }
-  </style>
+    <!-- 头部信息区域 -->
+    <meta charset="UTF-8">
+    <!-- 设置字符编码为UTF-8，确保中文显示正常 -->
+    <title>TreeLand | 树屋</title>
+    <!-- 设置网页标题 -->
 </head>
 
-<body>
+<body style="background-color: #f0f0f0; font-family: 'MiSans';">
+    <!-- 页面主体部分，设置背景色为浅灰色，字体为MiSans -->
 
+    <!-- 标题元素 -->
+    <p style="font-size: 50px; margin: 20px;">TreeLand | 树屋</p>
 
-  <header>
+    <!-- 容器：用于垂直排列Actived和Auto Pilot -->
+    <div style="display: flex; flex-direction: row;">
+        <!-- 页面头部区域 -->
+        <header>
+            <p style="margin: 20px; padding: 55px; background-color: white; border-radius: 28px; font-size: 30px;">
+                一段文字
+            </p>
+            <!-- 页面主标题 -->
+        </header>
 
-    <h1 style="text-align: center">This is a website.</h1>
+        <!-- 段落元素 -->
+        <p style="margin: 20px; padding: 55px; background-color: white; border-radius: 28px; font-size: 30px;">
+            一段文字
+        </p>
+    </div>
 
-  </header>
+    <!-- 内容区块 -->
+    <section style="margin: 20px; padding: 10px; background-color: white; border-radius: 28px;">
+        <!-- 样式说明：margin是外边距，padding是内边距，border-radius是圆角边框 -->
+        <ul list-style="none">
+            <!-- 无序列表 -->
+            <li>这是什么网站？</li>
+            <ul>
+                <li>如你所见，这里是一个没有树的赛博树屋。</li>
+            </ul>
+            <li>有什么用？</li>
+            <ul>
+                <li>我想听取大家的故事，也想和大家分享我的故事。</li>
+            </ul>
+            <li>如何投稿？</li>
+            <ul>
+                <li>你可以发送邮件到我的邮箱。</li>
+            </ul>
+        </ul>
+    </section>
 
-  <nav>
-    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: gray;">
+    <!-- 文章内容区域 -->
+    <article style="margin: 20px; padding: 35px; background-color: white; border-radius: 28px;">
+        <h1>article h1</h1>
+        <!-- 文章主标题 -->
+        <h2>article h2</h2>
+        <!-- 文章副标题 -->
+        <p>this is <strong>strong</strong> experience.</p>
+        <!-- 包含strong标签的段落，strong表示重要内容 -->
+        <p>this is my <em>experience</em>.</p>
+        <!-- 包含em标签的段落，em表示强调语气 -->
+        <p>this is my experience.</p>
+        <!-- 普通段落 -->
+        <a href="#" target="_blank">this is my experience.</a>
+        <!-- 超链接，target="_blank"表示在新窗口打开 -->
+    </article>
 
-      <li class="navbar"> <a href="index.html">Home</a></li>
-      <li class="navbar"> <a href="library.html">Dev</a></li>
-      <li class="navbar"> <a href="404.html">Contact</a></li>
+    <!-- 表格区域 -->
+    <table border="1" cellpadding="10" cellspacing="0" style="margin: 20px;">
+        <!-- 表格基本属性：border=1表示显示边框，cellpadding=10表示单元格内边距，cellspacing=0表示单元格间距为0 -->
+        <caption>Microsoft</caption>
+        <!-- 表格标题 -->
+        <tr>
+            <!-- 表格行 -->
+            <th colspan="2">table head</th>
+            <!-- 表头单元格，colspan="2"表示跨两列 -->
+        </tr>
+        <tr>
+            <!-- 第二行 -->
+            <td rowspan="2" style="background-color: red;">table text</td>
+            <!-- 普通单元格，rowspan="2"表示跨两行，背景色为红色 -->
+            <td style="background-color: green; color: white;">table text</td>
+            <!-- 普通单元格，背景色为绿色，文字颜色为白色 -->
+        </tr>
 
+        <tr>
+            <!-- 第三行 -->
+            <td style="background-color: yellowgreen;">table text</td>
+            <!-- 普通单元格，背景色为黄绿色 -->
+        </tr>
+        <tr>
+            <!-- 第四行 -->
+            <td style="background-color: orange;">table text</td>
+            <!-- 普通单元格，背景色为橙色 -->
+            <td style="background-color: purple; color: white;">table text</td>
+            <!-- 普通单元格，背景色为紫色，文字颜色为白色 -->
+        </tr>
+        <tr>
+            <!-- 第五行 -->
+            <td style="background-color: skyblue;">table text</td>
+            <!-- 普通单元格，背景色为天蓝色 -->
+            <td rowspan="2" style="background-color: yellow;">table text</td>
+            <!-- 普通单元格，rowspan="2"表示跨两行，背景色为黄色 -->
+        </tr>
+
+        <tr>
+            <!-- 第六行 -->
+            <td style="background-color: blue; color: white;">table text</td>
+            <!-- 普通单元格，背景色为蓝色，文字颜色为白色 -->
+        </tr>
+    </table>
+
+    <!-- 嵌套列表区域 -->
+    <ul class="top"
+        style="width: fit-content; margin: 20px; padding: 35px; background-color: white; border-radius: 28px;">
+        <!-- 外层无序列表，class="top"用于标识 -->
+        <li>
+            <!-- 列表项 -->
+            list
+            <ul>
+                <!-- 内层无序列表 -->
+                <li>inner list</li>
+                <li>inner list</li>
+                <li>inner list</li>
+            </ul>
+        </li>
+        <li>
+            <!-- 第二个列表项 -->
+            list2
+            <ul>
+                <!-- 内层无序列表 -->
+                <li>inner list</li>
+                <li>inner list</li>
+                <li>inner list</li>
+            </ul>
+        </li>
     </ul>
-  </nav>
 
-  <section>
-    <ul>
-      <li>section1</li>
-      <li>section2</li>
-      <li>section3</li>
+    <!-- 表单区域 -->
+    <form action="#" method="post" style="margin: 20px; padding: 35px; background-color: white; border-radius: 28px;">
+        <!-- 表单属性：action="#"表示提交到当前页面，method="post"表示使用POST方法提交 -->
 
-    </ul>
+        <!-- 用户名输入区域 -->
+        <label for="user_name">User:</label>
+        <!-- 标签，for属性与input的id对应 -->
+        <br>
+        <input type="text" id="user_name" name="user_name">
+        <!-- 文本输入框，id与name属性 -->
+        <br>
 
-  </section>
+        <!-- 密码输入区域 -->
+        <label for="user_password">Password:</label>
+        <br>
+        <input type="password" id="user_password" name="user_password">
+        <!-- 密码输入框，输入内容会被隐藏 -->
+        <br>
 
+        <!-- 性别选择区域 -->
+        <label>Gender:</label>
+        <br>
+        <input type="radio" id="male" name="user_gender" value="user_male">
+        <!-- 单选按钮，name相同的单选按钮为一组 -->
+        <label for="male">Male</label>
+        <!-- 单选按钮标签 -->
+        <input type="radio" id="female" name="user_gender" value="user_female">
+        <label for="female">Female</label>
+        <br>
 
+        <!-- 爱好选择区域 -->
+        <input type="checkbox" id="user_hobby" name="user_hobby" value="user_reading">
+        <!-- 复选框，name相同的复选框为一组 -->
+        <label for="user_hobby">Read</label>
+
+        <input type="checkbox" id="user_hobby2" name="user_hobby" value="user_gaming">
+        <label for="user_hobby2">Game</label>
+
+        <input type="checkbox" id="user_hobby3" name="user_hobby" value="user_music">
+        <label for="user_hobby3">Music</label>
+
+        <input type="checkbox" id="user_hobby4" name="user_hobby" value="user_sport">
+        <label for="user_hobby4">Sport</label>
+        <br>
+
+        <!-- 提交按钮 -->
+        <input type="submit" value="Commit">
+        <!-- 提交按钮，value为按钮显示文本 -->
+    </form>
+    <p style="text-align: center;">
+        https://lingfengsama.github.io/Ling
+    </p>
 </body>
-
 
 </html>
