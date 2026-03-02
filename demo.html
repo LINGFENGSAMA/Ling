@@ -1,342 +1,86 @@
 <!DOCTYPE html>
-<!-- 声明文档类型为HTML5 -->
-<html lang="zh-cn">
-<!-- 设置网页语言为中文 -->
 
 <head>
-    <meta charset="UTF-8">
-    <title>TreeLand | 树屋</title>
+    <title>TreeLand</title>
+    <style>
+        /* 基础样式设置 */
+        /* 确保html和body元素占据整个视口高度 */
+        html,
+        body {
+            height: 100%;
+            /* 设置高度为100% */
+            margin: 0;
+            /* 移除默认外边距 */
+            padding: 0;
+            /* 移除默认内边距 */
+            box-sizing: border-box;
+            /* 盒模型设置为border-box */
+        }
+    </style>
 </head>
 
-<body style="
-    background-color: #f0f0f0;
-    font-family: 'OPPO Sans 4.0';
-">
-    <!-- 横幅区域 -->
-    <div id="banner" style="
-        background-color: #4CAF50;
-        color: white;
-        padding: 20px 20px;
-        margin: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 10px;
-    ">
-        <p style="
-            margin: 0;
-            text-align: center;
-            flex: 1;
-        ">Welcome to TreeLand</p>
-        <span id="closeBtn" style="
-            font-size: 28px;
-            cursor: pointer;
-            line-height: 1;
-            padding: 0 5px;
-        ">&times;</span>
-    </div>
-
-    <ul style="
-        list-style-type: none;
-        margin: 20px;
-        padding: 10px;
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        border: 5px solid #ccc;
-        border-radius: 10px;
-    ">
-        <li style="
-            margin-right: 10px;
-            border-radius: 10px;
-        "><a href="#">Home</a></li>
-        <li style="
-            margin-right: 10px;
-            border-radius: 10px;
-        "><a href="#">Contact</a></li>
-        <li style="
-            margin-right: 10px;
-            border-radius: 10px;
-        "><a href="#">About</a></li>
-    </ul>
-    <!-- 标题元素 -->
-    <p style="
-        font-size: 50px;
-        margin: 20px;
-    ">TreeLand | 树屋</p>
-
-    <!-- 容器：用于水平排列内容 -->
+<body>
+    <!-- 主容器：实现整体页面居中 -->
     <div style="
-        display: flex;
-        flex-direction: row;
-    ">
-        <!-- 页面头部区域 -->
-        <header>
-            <p style="
-                margin: 20px;
-                padding: 55px;
-                background-color: #4CAF50;
-                color: white;
-                border-radius: 28px;
-                font-size: 30px;
+            display: flex;              /* 使用Flexbox布局 */
+            justify-content: center;     /* 水平居中 */
+            align-items: center;         /* 垂直居中 */
+            min-height: 100vh;           /* 最小高度为视口高度 */
+            padding: 20px;               /* 内边距20px */
+            box-sizing: border-box;      /* 盒模型设置 */
+            /* border: black 5px solid; */
+        ">
+        <!-- 内容容器：水平排列文字和图片 -->
+        <div style="
+                display: flex;              /* 使用Flexbox布局 */
+                flex-direction: row;        /* 水平排列方向 */
+                align-items: center;         /* 垂直对齐方式：居中 */
+                max-width: 90%;             /* 最大宽度为视口的90% */
+                max-height: 80vh;           /* 最大高度为视口的80% */
+                /* border: black 5px solid; */
             ">
-                一段文字
-            </p>
-        </header>
+            <!-- 文字部分 -->
+            <div style="
+                    font-size: 3vw;          /* 文字大小为视口宽度的3% */
+                    margin: 5%;              /* 外边距5% */
+                    padding: 5%;             /* 内边距5% */
+                    flex: 1;                 /* 弹性分配：占据1份空间 */
+                    /* border: black 5px solid; */
+                ">
+                <p> TreeLand <!-- 第一行文字 -->
+                    <br> <!-- 换行 -->
+                    Build you own dream land. <!-- 第二行文字 -->
+                </p>
+            </div>
 
-        <!-- 段落元素 -->
-        <p style="
-            margin: 20px;
-            padding: 55px;
-            background-color: white;
-            border-radius: 28px;
-            font-size: 30px;
-        ">
-            一段文字
-        </p>
+            <!-- 图片部分 -->
+            <div style="
+                    flex: 1;                 /* 弹性分配：占据1份空间 */
+                    display: flex;              /* 使用Flexbox布局 */
+                    justify-content: center;     /* 水平居中图片 */
+                    align-items: center;         /* 垂直居中图片 */
+                    /* border: black 5px solid; */
+                ">
+                <img src="resouces\preview.jpg" style="
+                        width: 100%;              /* 宽度100% */
+                        height: auto;             /* 高度自动，保持比例 */
+                        max-width: 100%;          /* 最大宽度100% */
+                        max-height: 70vh;         /* 最大高度为视口的70% */
+                        object-fit: contain;      /* 保持图片比例，完整显示 */
+                        /* border: black 5px solid; */
+                    ">
+            </div>
+        </div>
     </div>
 
-    <!-- 内容区块 -->
-    <section style="
-        margin: 20px;
-        padding: 10px;
-        background-color: white;
-        border-radius: 28px;
-    ">
-        <ul style="
-            list-style: none;
+    <!-- 页脚 -->
+    <footer style="
+            text-align: center;          /* 文字居中 */
+            padding: 20px;               /* 内边距20px */
+            background-color: #f4f4f4;   /* 背景颜色 */
+            margin-top: 20px;            /* 顶部外边距20px */
         ">
-            <li>这是什么网站？</li>
-            <ul>
-                <li>如你所见，这里是一个没有树的赛博树屋。</li>
-            </ul>
-            <li>有什么用？</li>
-            <ul>
-                <li>我想听取大家的故事，也想和大家分享我的故事。</li>
-            </ul>
-            <li>如何投稿？</li>
-            <ul>
-                <li>你可以发送邮件到我的邮箱。</li>
-            </ul>
-        </ul>
-    </section>
-
-    <!-- 文章内容区域 -->
-    <article style="
-        margin: 20px;
-        padding: 35px;
-        background-color: white;
-        border-radius: 28px;
-    ">
-        <h1>article h1</h1>
-        <h2>article h2</h2>
-        <p>this is <strong>strong</strong> experience.</p>
-        <p>this is my <em>experience</em>.</p>
-        <p>this is my experience.</p>
-        <a href="#" target="_blank">this is my experience.</a>
-    </article>
-
-    <!-- 表格区域 -->
-    <table border="1" cellpadding="10" cellspacing="0" style="
-        margin: 20px;
-    ">
-        <caption>Microsoft</caption>
-        <tr>
-            <th colspan="2">table head</th>
-        </tr>
-        <tr>
-            <td rowspan="2" style="
-                background-color: red;
-            ">table text</td>
-            <td style="
-                background-color: green;
-                color: white;
-            ">table text</td>
-        </tr>
-
-        <tr>
-            <td style="
-                background-color: yellowgreen;
-            ">table text</td>
-        </tr>
-        <tr>
-            <td style="
-                background-color: orange;
-            ">table text</td>
-            <td style="
-                background-color: purple;
-                color: white;
-            ">table text</td>
-        </tr>
-        <tr>
-            <td style="
-                background-color: skyblue;
-            ">table text</td>
-            <td rowspan="2" style="
-                background-color: yellow;
-            ">table text</td>
-        </tr>
-
-        <tr>
-            <td style="
-                background-color: blue;
-                color: white;
-            ">table text</td>
-        </tr>
-    </table>
-
-    <!-- 嵌套列表区域 -->
-    <ul class="top" style="
-        width: fit-content;
-        margin: 20px;
-        padding: 35px;
-        background-color: white;
-        border-radius: 28px;
-    ">
-        <li>
-            list
-            <ul>
-                <li>1234567890</li>
-                <li>inner list</li>
-                <li>inner list</li>
-            </ul>
-        </li>
-        <li>
-            list2
-            <ul>
-                <li>inner list</li>
-                <li>inner list</li>
-                <li>inner list</li>
-            </ul>
-        </li>
-    </ul>
-
-    <!-- 表单区域 -->
-    <form action="#" method="post" style="
-        margin: 20px;
-        padding: 35px;
-        background-color: white;
-        border-radius: 28px;
-    ">
-        <!-- 用户名输入区域 -->
-        <label for="user_name">User:</label>
-        <br>
-        <input type="text" id="user_name" name="user_name" placeholder="请输入您的用户名" required style="border-radius: 5px;">
-        <br>
-
-        <!-- 密码输入区域 -->
-        <label for="user_password">Password:</label>
-        <br>
-        <input type="password" id="user_password" name="user_password" placeholder="请输入您的密码" required
-            style="border-radius: 5px;">
-        <br>
-
-        <!-- 性别选择区域 -->
-        <label>Gender:</label>
-        <br>
-        <input type="radio" id="male" name="user_gender" value="user_male">
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="user_gender" value="user_female">
-        <label for="female">Female</label>
-        <br>
-        <label>Hobby:</label>
-        <br>
-        <!-- 爱好选择区域 -->
-        <input type="checkbox" id="user_hobby" name="user_hobby" value="user_reading">
-        <label for="user_hobby">Read</label>
-
-        <input type="checkbox" id="user_hobby2" name="user_hobby" value="user_gaming">
-        <label for="user_hobby2">Game</label>
-
-        <input type="checkbox" id="user_hobby3" name="user_hobby" value="user_music">
-        <label for="user_hobby3">Music</label>
-
-        <input type="checkbox" id="user_hobby4" name="user_hobby" value="user_sport">
-        <label for="user_hobby4">Sport</label>
-        <br>
-        <label for="user_city">City:</label>
-        <select id="user_city" name="user_city" style="border-radius: 5px;">
-            <option value="default">Please select a city.</option>
-            <option value="Beijing">Beijing</option>
-            <option value="Shanghai">Shanghai</option>
-            <option value="Guangzhou">Guangzhou</option>
-            <option value="Shenzhen">Shenzhen</option>
-        </select>
-        <br>
-
-        <!-- 提交按钮 -->
-        <input type="submit" value="Commit" style="border-radius: 5px;">
-        <input type="reset" value="Reset" style="border-radius: 5px;">
-    </form>
-    <input type="button" id="switchfonttoxiaomi" value="Switch to MiSans" style="border-radius: 5px;">
-    <input type="button" id="switchfonttooppo" value="Switch to OPPO Sans 4.0" style="border-radius: 5px;">
-    <br>
-
-
-
-    <div style="
-        margin: 20px;
-        padding: 35px;
-        background-color: white;
-        border-radius: 28px;
-        display: inline-block;
-    ">
-        <canvas id="ai" width="500" height="100"></canvas>
-        <script>
-            const canvas = document.getElementById('ai');
-            const ctx = canvas.getContext('2d');
-            
-            // 创建水平渐变，从左到右的颜色过渡
-            var ai = ctx.createLinearGradient(0, 0, 500, 0);
-            ai.addColorStop(0, '#4F46E5');    // 蓝色
-            ai.addColorStop(0.2, '#8B5CF6');  // 紫色
-            ai.addColorStop(0.4, '#EC4899');  // 粉色
-            ai.addColorStop(0.6, '#EF4444');  // 红色
-            ai.addColorStop(0.8, '#F97316');  // 橙色
-            ai.addColorStop(1, '#EAB308');    // 黄色
-            
-            // 设置渐变填充
-            ctx.fillStyle = ai;
-            
-            // 设置字体大小为h1级别
-            ctx.font = '32px OPPO Sans 4.0';
-            
-            // 绘制文字，调整位置
-            ctx.fillText('Apple Intelligence', 10, 65);
-        </script>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <p style="text-align: center;">https://lingfengsama.github.io/Ling</p>
-
-    <!-- JavaScript：实现横幅关闭功能 -->
-    <script>
-        document.getElementById('closeBtn').addEventListener('click', function () {
-            document.getElementById('banner').style.display = 'none';
-        });
-        document.getElementById('switchfonttoxiaomi').addEventListener('click', function () {
-            document.body.style.fontFamily = 'MiSans';
-        });
-        document.getElementById('switchfonttooppo').addEventListener('click', function () {
-            document.body.style.fontFamily = 'OPPO Sans 4.0';
-        });
-    </script>
+        <p>2026 凌落倾风 All rights reserved. | <a href="https://lingfengsama.github.io/Ling"
+                target="_blank">https://lingfengsama.github.io/Ling</a></p> <!-- 版权信息 -->
+    </footer>
 </body>
-
-</html>
