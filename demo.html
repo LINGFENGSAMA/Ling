@@ -1,86 +1,227 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TreeLand</title>
+    <!-- 全局重置样式 -->
     <style>
-        /* 基础样式设置 */
-        /* 确保html和body元素占据整个视口高度 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html,
         body {
             height: 100%;
-            /* 设置高度为100% */
-            margin: 0;
-            /* 移除默认外边距 */
-            padding: 0;
-            /* 移除默认内边距 */
-            box-sizing: border-box;
-            /* 盒模型设置为border-box */
+            font-family: 'OPPO Sans 4.0', sans-serif;
+        }
+
+        a:hover a:link,
+        a:visited a:active {
+            color: #07C3F2;
+            /* 鼠标悬停时的颜色 */
         }
     </style>
 </head>
 
-<body>
+<body style="
+    height: 100%;
+    font-family: 'OPPO Sans 4.0', sans-serif;
+">
     <!-- 主容器：实现整体页面居中 -->
     <div style="
-            display: flex;              /* 使用Flexbox布局 */
-            justify-content: center;     /* 水平居中 */
-            align-items: center;         /* 垂直居中 */
-            min-height: 100vh;           /* 最小高度为视口高度 */
-            padding: 20px;               /* 内边距20px */
-            box-sizing: border-box;      /* 盒模型设置 */
-            /* border: black 5px solid; */
-        ">
+        display: flex;              /* 使用Flexbox弹性布局 */
+        justify-content: center;     /* 水平方向居中 */
+        align-items: center;         /* 垂直方向居中 */
+        min-height: 100vh;           /* 最小高度为视口高度，确保占满全屏 */
+        padding: 20px;               /* 容器内边距，防止内容贴边 */
+        border-radius: 50px;          /* 圆角边框 */
+    ">
         <!-- 内容容器：水平排列文字和图片 -->
         <div style="
-                display: flex;              /* 使用Flexbox布局 */
-                flex-direction: row;        /* 水平排列方向 */
-                align-items: center;         /* 垂直对齐方式：居中 */
-                max-width: 90%;             /* 最大宽度为视口的90% */
-                max-height: 80vh;           /* 最大高度为视口的80% */
-                /* border: black 5px solid; */
-            ">
-            <!-- 文字部分 -->
+            display: flex;              /* 使用Flexbox布局 */
+            flex-direction: row;        /* 子元素水平排列（左右方向） */
+            align-items: center;         /* 子元素垂直居中对齐 */
+            width: 90%;                 /* 容器宽度为视口的90% */
+            max-height: 80vh;           /* 最大高度为视口的80% */
+            gap: 2rem;                  /* 子元素之间的间距（2倍根字体大小） */
+            border-radius: 50px;          /* 圆角边框 */
+        ">
+            <!-- 文字部分：展示品牌名称和标语 -->
             <div style="
-                    font-size: 3vw;          /* 文字大小为视口宽度的3% */
-                    margin: 5%;              /* 外边距5% */
-                    padding: 5%;             /* 内边距5% */
-                    flex: 1;                 /* 弹性分配：占据1份空间 */
-                    /* border: black 5px solid; */
-                ">
-                <p> TreeLand <!-- 第一行文字 -->
-                    <br> <!-- 换行 -->
-                    Build you own dream land. <!-- 第二行文字 -->
+                font-size: clamp(1rem, 4vw, 3.5rem); /* clamp()函数：设置最小、理想、最大字体大小，最小值1rem，理想值4vw，最大值3.5rem */
+                margin: 0;                 /* 移除默认外边距 */
+                padding: 2rem;             /* 内边距，提供呼吸空间 */
+                flex: 1;                   /* 弹性分配：与图片平分空间 */
+                transition: font-size 0.3s ease; /* 字体大小变化时的平滑过渡动画 */
+                border-radius: 50px;          /* 圆角边框 */
+                background-color: #F4F4F4;   /* 浅灰色背景 */
+            ">
+                <p>
+                    TreeLand
+                    <br>
+                    Build you own dream land.
                 </p>
             </div>
 
-            <!-- 图片部分 -->
+            <!-- 图片部分容器：用于展示主页面图片 -->
             <div style="
-                    flex: 1;                 /* 弹性分配：占据1份空间 */
-                    display: flex;              /* 使用Flexbox布局 */
-                    justify-content: center;     /* 水平居中图片 */
-                    align-items: center;         /* 垂直居中图片 */
-                    /* border: black 5px solid; */
+                flex: 1;                   /* 弹性分配：与文字平分空间 */
+                display: flex;              /* 使用Flexbox居中图片 */
+                justify-content: center;     /* 水平居中图片 */
+                align-items: center;         /* 垂直居中图片 */
+                transition: all 0.3s ease;  /* 所有属性变化时的平滑过渡 */
+                border-radius: 50px;          /* 圆角边框 */
+            ">
+                <img src="assets/index_main_page1.jpg" alt="GrassBlock" style="
+                    width: 100%;              /* 宽度占满容器 */
+                    height: auto;             /* 高度自动，保持图片原始比例 */
+                    max-width: 100%;          /* 最大宽度100%，防止溢出 */
+                    max-height: 70vh;         /* 最大高度为视口的70% */
+                    object-fit: contain;      /* 保持图片比例，完整显示图片 */
+                    transition: all 0.3s ease; /* 所有属性变化时的平滑过渡动画 */
+                    border-radius: 50px;          /* 圆角边框 */
                 ">
-                <img src="resouces\preview.jpg" style="
-                        width: 100%;              /* 宽度100% */
-                        height: auto;             /* 高度自动，保持比例 */
-                        max-width: 100%;          /* 最大宽度100% */
-                        max-height: 70vh;         /* 最大高度为视口的70% */
-                        object-fit: contain;      /* 保持图片比例，完整显示 */
-                        /* border: black 5px solid; */
-                    ">
             </div>
         </div>
     </div>
 
-    <!-- 页脚 -->
-    <footer style="
-            text-align: center;          /* 文字居中 */
-            padding: 20px;               /* 内边距20px */
-            background-color: #f4f4f4;   /* 背景颜色 */
-            margin-top: 20px;            /* 顶部外边距20px */
+
+
+
+
+    <!-- 工具选择区域：展示推荐的开发工具 -->
+    <div style="
+            justify-content: center;     /* 水平方向居中 */
+            padding: 20px;               /*容器内边距，防止内容贴边*/
+            border-radius: 50px;          /* 圆角边框 */
         ">
-        <p>2026 凌落倾风 All rights reserved. | <a href="https://lingfengsama.github.io/Ling"
-                target="_blank">https://lingfengsama.github.io/Ling</a></p> <!-- 版权信息 -->
+        <!-- 工具选择标题 -->
+        <p style="font-size: clamp(1rem, 4vw, 3.5rem);text-align: center;">
+            How to build ?
+        </p>
+
+        <!-- 三个竖直的小控件：展示推荐的开发工具 -->
+        <div style="
+                display: flex;              /* 使用Flexbox布局 */
+                flex-direction: row;        /* 水平排列容器 */
+                gap: 20px;                  /* 控件之间的间距 */
+                margin-top: 20px;           /* 顶部外边距 */
+                justify-content: center;     /* 水平居中 */
+            ">
+            <!-- 第一个控件：推荐 JetBrains -->
+            <div style="
+                    padding: 20px;             /* 内边距 */
+                    border-radius: 24px;       /* 圆角24px */
+                    display: flex;             /* Flexbox布局 */
+                    flex-direction: column;    /* 垂直排列容器 */
+                    justify-content: center;    /* 水平居中 */
+                    background-color: #F4F4F4;   /* 浅灰色背景 */
+                ">
+                <p style="text-align: top;font-size: 24px;">
+                    Build with
+                    <a href="https://www.jetbrains.com/" target="_blank">Jetbrains</a>.
+                </p>
+            </div>
+
+            <!-- 第二个控件：推荐 Visual Studio Code -->
+            <div style="
+                    padding: 20px;             /* 保持上级控件内边距不变 */
+                    border-radius: 24px;       /* 圆角24px */
+                    display: flex;             /* Flexbox布局 */
+                    flex-direction: column;    /* 垂直排列容器 */
+                    justify-content: center;    /* 水平居中 */
+                    background-color: #F4F4F4;   /* 浅灰色背景 */
+                ">
+                <p style="text-align: top;font-size: 24px;">
+                    Build with
+                    <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>.
+                </p>
+            </div>
+
+            <!-- 第三个控件：推荐 Trae -->
+            <div style="
+                    padding: 20px;             /* 内边距 */
+                    border-radius: 24px;       /* 圆角24px */
+                    display: flex;             /* Flexbox布局 */
+                    flex-direction: column;    /* 垂直排列容器 */
+                    justify-content: center;    /* 水平居中 */
+                    background-color: #F4F4F4;   /* 浅灰色背景 */
+
+                ">
+                <p style="text-align: top;font-size: 24px;">
+                    Build with
+                    <a href="https://trae.cn/" target="_blank">Trae</a>.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <!-- 通知栏：显示欢迎信息 -->
+    <div id="notificationBar" style="
+                background-color: #4CAF50;
+                color: white;
+                padding: 20px 20px;
+                margin: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 10px;
+            ">
+        <!-- 通知栏文字内容 -->
+        <p style="
+                    margin: 0;
+                    text-align: center;
+                    flex: 1;
+                ">欢迎来到树屋</p>
+        <!-- 关闭按钮：用于隐藏通知栏 -->
+        <span id="closeBtn" style="
+                    font-size: 28px;
+                    cursor: pointer;
+                    line-height: 1;
+                    padding: 0 5px;
+                ">&times;</span>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 页脚：版权信息和链接 -->
+    <footer style="
+        text-align: center;          /* 文字居中 */
+        padding: 20px;               /* 内边距 */
+        background-color: #f4f4f4;   /* 浅灰色背景 */
+        margin-top: 20px;            /* 顶部外边距，与上面内容分隔 */
+        border-radius: 50px;          /* 圆角边框 */
+    ">
+        <!-- 版权信息和个人链接 -->
+        <p>2007-2026 凌落倾风 All rights reserved. |
+            <a href="https://lingfengsama.github.io/Ling" target="_blank" style="
+                color: #333;               /* 深灰色文字 */
+                text-decoration: none;       /* 移除下划线 */
+            ">https://lingfengsama.github.io/Ling</a>
+        </p>
+        <br>
+        <!-- 最后更新时间 -->
+        <p>Latest Update: 2026.03.08 04:55:00 PM</p>
     </footer>
 </body>
+<script>
+    // 获取关闭按钮和通知栏元素
+    const closeBtn = document.getElementById('closeBtn');
+    const notificationBar = document.getElementById('notificationBar');
+
+    // 添加点击事件监听器
+    closeBtn.addEventListener('click', () => {
+        notificationBar.style.display = 'none'; // 隐藏通知栏
+    });
+</script>
+
+</html>
